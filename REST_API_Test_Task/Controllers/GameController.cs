@@ -16,7 +16,7 @@ namespace REST_API_Test_Task.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> NewGame()
+        public async Task<JsonResult> NewGameAsync()
         {
             Game game = new Game();
 
@@ -31,7 +31,7 @@ namespace REST_API_Test_Task.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> Move(Game game, int i, int j, Sign sign)
+        public async Task<JsonResult> MoveAsync(Game game, int i, int j, Sign sign)
         {
             var dbGame = await _context.Games.FindAsync(game.Id);
             if (dbGame == null)
@@ -69,7 +69,7 @@ namespace REST_API_Test_Task.Controllers
         }
 
         [HttpGet]
-        public async Task<JsonResult> Get(int id)
+        public async Task<JsonResult> GetAsync(int id)
         {
             var result = await _context.Games.FindAsync(id);
             if(result == null) 
