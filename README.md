@@ -32,6 +32,22 @@
   - int GameId - id сессии
   
 Контроллеры:
-- "GameController" - 
-
+- "GameController"
+  POST: 
+  - NewGameAsync() инициализация новой игры
+    Response body:
+      {
+        "value": {
+           "id": 11,
+          "currentSign": "X",
+          "field": "{\"Field\":[[0,0,0],[0,0,0],[0,0,0]]}"
+        },
+        "formatters": [],
+        "contentTypes": [],
+        "declaredType": null,
+        "statusCode": 200
+      }
+  
+  - MoveAsync(Game game, int i, int j, Sign sign) Ход игрока пищем X/O
+    Request body 
 
