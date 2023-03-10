@@ -7,8 +7,21 @@
 
 Модели:
 - "Game" - Хранит данные игровой сессии:
-  - integer "Id"
-  - text "CurrentSign" - Текущий ход игрока крестик\нолик, приводится к string от enum "Sign"
-  - text "Field" - игровое поле "GameField" записанное d JSON
+  - int "Id"
+  - string "CurrentSign" - Текущий ход игрока крестик\нолик, приводится к string от enum "Sign"
+  - string "Field" - игровое поле "GameField" записанное в JSON
   
-- 
+- "GameField" - Игровое поле, методы работы с полем:
+  - int[][] Field
+  Методы:
+  - EditSign(int i, int j, Sign sign) => void
+  - IsCellFree(int i, int j) => bool
+  - CoonvertToJson() => string
+  - GetFromJson(string json) => GameField
+  - WinCheck() => bool - проверка всех вариантов победы
+  - WinCheckHorizaontal() => bool
+  - WinCheckVertical() => bool
+  - WinCheckDioganal() => bool
+
+- "Outcome" - итоги игры
+  - 
