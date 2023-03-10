@@ -35,7 +35,15 @@
 - "GameController"
   POST: 
   - NewGameAsync() инициализация новой игры
-    Response body:
+      Request url https://localhost:7140/api/Game/NewGame
+      curl
+      {
+        curl -X 'POST' \
+          'https://localhost:7140/api/Game/NewGame' \
+          -H 'accept: */*' \
+          -d ''
+      }        
+      Response body:
       {
         "value": {
            "id": 11,
@@ -49,5 +57,57 @@
       }
   
   - MoveAsync(Game game, int i, int j, Sign sign) Ход игрока пищем X/O
-    Request body 
+      Request url https://localhost:7140/api/Game/Move?i=0&j=0&sign=1
+      curl
+      {
+        curl -X 'POST' \
+          'https://localhost:7140/api/Game/Move?i=0&j=0&sign=1' \
+          -H 'accept: */*' \
+          -H 'Content-Type: application/json' \
+          -d '{
+          "id": 11,
+          "currentSign": "X",
+          "field": "{\"Field\":[[0,0,0],[0,0,0],[0,0,0]]}"
+        }'
+      }      
+      Request body: 
+      {
+        "id": 11,
+        "currentSign": "X",
+        "field": "{\"Field\":[[0,0,0],[0,0,0],[0,0,0]]}"
+      }
 
+      Response body:
+      {
+        "value": {
+          "id": 11,
+          "currentSign": "O",
+          "field": "{\"Field\":[[1,0,0],[0,0,0],[0,0,0]]}"
+        },
+        "formatters": [],
+        "contentTypes": [],
+        "declaredType": null,
+        "statusCode": 200
+      } 
+  
+  GET:
+  - GetAsync(int id)
+      Request url https://localhost:7140/api/Game/Get?id=11
+      curl
+      {
+        curl -X 'GET' \
+          'https://localhost:7140/api/Game/Get?id=11' \
+          -H 'accept: */*'  
+      }
+      Response body
+      {
+        "value": {
+          "id": 11,
+          "currentSign": "O",
+          "field": "{\"Field\":[[1,0,0],[0,0,0],[0,0,0]]}"
+        },
+        "formatters": [],
+        "contentTypes": [],
+        "declaredType": null,
+        "statusCode": 200
+      }
