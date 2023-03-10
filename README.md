@@ -56,7 +56,7 @@
         "statusCode": 200
       }
   
-  - MoveAsync(Game game, int i, int j, Sign sign) Ход игрока пищем X/O
+  - MoveAsync(Game game, int i, int j, Sign sign) Ход игрока пищем X/O, выполняется проверка победы, в случае победы создается запись в Outcomes
       Request url https://localhost:7140/api/Game/Move?i=0&j=0&sign=1
       curl
       {
